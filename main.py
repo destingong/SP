@@ -2,8 +2,7 @@ import taipy as tp
 import taipy.gui.builder as tgb
 from taipy.gui import Icon
 from taipy import Config
-
-ngrok_token = "2rbsysF7VUDlz0D8HdQPRxFkPj3_3kahZiBoKtmgWoLe8Ntij"
+from tokens import NGROK_TOKEN
 
 with tgb.Page() as page:    
   tgb.text(
@@ -12,4 +11,4 @@ with tgb.Page() as page:
   )
   
 gui = tp.Gui(page)
-gui.run(title='Data Science Dashboard', ngrok_token=ngrok_token)
+gui.run(title='Data Science Dashboard', ngrok_token=NGROK_TOKEN)
