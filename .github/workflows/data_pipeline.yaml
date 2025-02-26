@@ -4,17 +4,17 @@ run: push
 
 jobs:
     run-data-pipeline:
-    runs-on: ubuntun-latest
+        runs-on: ubuntu-latest
 
-    steps:
-        - name: checkout repo content
-          uses: actions/checkout@v4
-          with: 
-            token: ${{ secrets.PEROSNAL_ACCESS_TOKEN}}
-        - name: Python Setup
-          uses: actions/setup-python@v5
-          with:
-            python-version: '3.9'
-            cache: 'pip'
-        - name: Run data pipeline
-          run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-31"
+        steps:
+            - name: checkout repo content
+            uses: actions/checkout@v4
+            with: 
+                token: ${{ secrets.PEROSNAL_ACCESS_TOKEN}}
+            - name: Python Setup
+            uses: actions/setup-python@v5
+            with:
+                python-version: '3.9'
+                cache: 'pip'
+            - name: Run data pipeline
+            run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-31"
