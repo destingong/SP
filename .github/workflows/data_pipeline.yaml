@@ -16,4 +16,4 @@ jobs:
                 python-version: '3.9'
                 cache: 'pip'
             - name: Run data pipeline
-                run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-31"
+              run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-31"
