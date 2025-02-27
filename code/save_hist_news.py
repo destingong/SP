@@ -52,7 +52,7 @@ def main(args=None):
   print("Start Date is: ", args.start)
   print("End Date is: ", args.end)
 
-  work_dir = ''
+  work_dir = '..'
   date_range = pd.date_range(start=args.start, end=args.end)
   content_lst = []
 
