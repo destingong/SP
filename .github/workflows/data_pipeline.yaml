@@ -1,6 +1,6 @@
 name: data-pipeline-workflow
 
-run: push
+on: push
 
 jobs:
     run-data-pipeline:
