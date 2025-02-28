@@ -1,0 +1,26 @@
+name: data-pipeline-workflow
+
+on: 
+    push:
+
+jobs:
+    run-data-pipeline:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo content
+              uses: actions/checkout@v4
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.11'  # Specify your Python version here
+            - name: Print working directory
+              run: |
+                echo "Working directory: $(pwd)"
+            - name: Install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                python -m http.client
+                pip install -r requirements.txt
+            - name: Run data pipeline
+              # run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-02"
+              run: python code/test.py
