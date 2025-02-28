@@ -1,7 +1,7 @@
 name: data-pipeline-workflow
 
 on: 
-    push:
+    workflow_dispatch:
 
 jobs:
     run-data-pipeline:
@@ -19,4 +19,4 @@ jobs:
                 python -m http.client
                 pip install -r requirements.txt
             - name: Run data pipeline
-              run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-31"
+              run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-02"
