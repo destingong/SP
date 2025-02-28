@@ -66,7 +66,7 @@ def main(args=None):
   fn_end = args.end.replace('-', '')
   filename = 'apple_news_' + fn_start + '_' + fn_end + '.jsonl'
   # filepath = os.path.join('data', filename) 
-  filepath = 'SP/data/test.jsonl'
+  filepath = '/data/test.jsonl'
   print(filepath)
 
   # save news data
