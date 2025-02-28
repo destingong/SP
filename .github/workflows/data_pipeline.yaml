@@ -1,7 +1,7 @@
 name: data-pipeline-workflow
 
 on: 
-    workflow_dispatch:
+    push:
 
 jobs:
     run-data-pipeline:
