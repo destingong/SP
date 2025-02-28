@@ -8,6 +8,7 @@ with open(filepath, 'w') as f:
   f.write('\nhello')
 
 # Traverse up the directory tree
+current_dir = ''
 while current_dir != os.path.dirname(current_dir):  # Stop at the root directory
     print(current_dir)
     current_dir = os.path.dirname(current_dir)
