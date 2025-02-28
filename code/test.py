@@ -1,7 +1,7 @@
 import os
-filepath = '/data/test.txt'
+filepath = '/home/runner/work/SP/SP/data/test.txt'
 print(filepath)
-print('Script workding directory', os.getcwd())
+print('Script working directory', os.getcwd())
 
 # save news data
 import json
