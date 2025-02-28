@@ -53,7 +53,6 @@ def main(args=None):
   print("Start Date is: ", args.start)
   print("End Date is: ", args.end)
 
-  work_dir = '..'
   date_range = pd.date_range(start=args.start, end=args.end)
   content_lst = []
 
@@ -66,7 +65,8 @@ def main(args=None):
   fn_start = args.start.replace('-', '')
   fn_end = args.end.replace('-', '')
   filename = 'apple_news_' + fn_start + '_' + fn_end + '.jsonl'
-  filepath = os.path.join('data', filename)
+  # filepath = os.path.join('data', filename) 
+  filepath = 'SP/data/test.jsonl'
   print(filepath)
 
   # save news data
