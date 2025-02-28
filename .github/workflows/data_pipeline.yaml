@@ -22,9 +22,8 @@ jobs:
                 python -m http.client
                 pip install -r requirements.txt
             - name: Run data pipeline
-              # run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-02"
-              run: python code/test.py
-            - name: Check for changes # create env variable indicating if any changes were made
+              run: python code/save_hist_news.py --start "2025-01-01" --end "2025-01-31"
+            - name: Commit changes
               id: git-check
               run: |
                   git config user.name 'github-actions'
