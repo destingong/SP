@@ -3,7 +3,7 @@ name: data-pipeline-workflow
 on: 
     workflow_dispatch:
     schedule:
-        - cron: "24 23 1 * *" # run 1st day of every monht
+        - cron: "34 23 1 * *" # run 1st day of every monht
 
 jobs:
     run-data-pipeline:
@@ -25,8 +25,8 @@ jobs:
                 pip install -r requirements.txt
             - name: Run data pipeline
               run: |
-                  PREV_MONTH_START=$(date -v1d -v-1m +%Y-%m-%d)
-                  PREV_MONTH_END=$(date -v1d -v-0m -v-1d +%Y-%m-%d)
+                  PREV_MONTH_START=$(date -d "`date +%Y%m01` -1 month" +%Y-%m-%d)
+                  PREV_MONTH_END=$(date -d "`date +%Y%m01` -1 day" +%Y-%m-%d)
                   python code/save_hist_news.py --start $PREV_MONTH_START --end $PREV_MONTH_END
             - name: Commit changes
               id: git-check
