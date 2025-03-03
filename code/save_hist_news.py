@@ -1,11 +1,13 @@
 import numpy as np
 import pandas as pd
+import sys
+import os
 
 def get_url(search_term, date):
   import http.client, urllib.parse
 
   params = urllib.parse.urlencode({
-      'api_token': 'PWzpkUXdNA8AVZwWnTT90qXfhziPxxQwBBSeyOGH',
+      'api_token': os.getenv('NEWS_API_TOKEN'),
       'categories': 'business,tech',
       'limit': 3,
       'published_on': date,
@@ -66,7 +68,6 @@ def main(args=None):
   fn_end = args.end.replace('-', '')
   filename = 'apple_news_' + fn_start + '_' + fn_end + '.jsonl'
   filepath = os.path.join('data', filename) 
-  # filepath = '/data/test.jsonl'
   print(filepath)
 
   # save news data
