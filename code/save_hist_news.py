@@ -1,13 +1,13 @@
 import numpy as np
 import pandas as pd
 import sys
-import tokens
+import os
 
 def get_url(search_term, date):
   import http.client, urllib.parse
 
   params = urllib.parse.urlencode({
-      'api_token': tokens.NEWS_API_TOKEN,
+      'api_token': os.getenv('NEWS_API_TOKEN'),
       'categories': 'business,tech',
       'limit': 3,
       'published_on': date,
