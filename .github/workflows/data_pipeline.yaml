@@ -3,7 +3,7 @@ name: data-pipeline-workflow
 on: 
     workflow_dispatch:
     schedule:
-        - cron: "34 23 1 * *" # run 1st day of every monht
+        - cron: "34 23 1 * *" # run 1st day of every month
 
 jobs:
     run-data-pipeline:
@@ -24,6 +24,8 @@ jobs:
                 python -m http.client
                 pip install -r requirements.txt
             - name: Run data pipeline
+              env:
+                  NEWS_API_TOKEN: ${{ secrets.NEWS_API_TOKEN }} 
               run: |
                   PREV_MONTH_START=$(date -d "`date +%Y%m01` -1 month" +%Y-%m-%d)
                   PREV_MONTH_END=$(date -d "`date +%Y%m01` -1 day" +%Y-%m-%d)
