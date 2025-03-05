@@ -30,12 +30,17 @@ jobs:
                   PREV_MONTH_START=$(date -d "`date +%Y%m01` -1 month" +%Y-%m-%d)
                   PREV_MONTH_END=$(date -d "`date +%Y%m01` -1 day" +%Y-%m-%d)
                   python code/save_hist_news.py --start $PREV_MONTH_START --end $PREV_MONTH_END
-            - name: Commit changes
+            - name: Check changes
               id: git-check
               run: |
                   git config user.name 'github-actions'
                   git config user.email 'github-actions@github.com'
                   git add .
+                  git diff --staged --quite || echo "changes=true" >> $GITHUB_ENV
+            - name: Commit and push if changes
+              if: env.changes == 'true'
+              run: |
                   git commit -m "update data"
                   git push
+                  
             
