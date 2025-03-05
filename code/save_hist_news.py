@@ -5,7 +5,7 @@ import os
 
 def get_url(search_term, date):
   import http.client, urllib.parse
-
+  print(os.getenv('NEWS_API_TOKEN'))
   params = urllib.parse.urlencode({
       'api_token': os.getenv('NEWS_API_TOKEN'),
       'categories': 'business,tech',
