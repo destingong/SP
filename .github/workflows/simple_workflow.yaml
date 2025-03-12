@@ -7,6 +7,9 @@ jobs:
     run-hello-world:
       runs-on: ubuntu-latest
       steps:
+          - name: Print working directory
+            run: |
+                echo "Working directory: $(pwd)"
           - name: Run hello world
             run: 
               python code/hello_world.py
