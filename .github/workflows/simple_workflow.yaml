@@ -9,4 +9,4 @@ jobs:
       steps:
           - name: Run hello world
             run: 
-              python hello_world.py
+              python code/hello_world.py
