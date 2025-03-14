@@ -1,9 +1,9 @@
-name: data-pipeline-workflow
+name: scheduled-workflow
 
 on: 
     workflow_dispatch:
     schedule:
-        - cron: "34 23 1 * *" # run 1st day of every month
+        - cron: "0 12 1 * *" # run 1st day of every month
 
 jobs:
     run-data-pipeline:
@@ -21,23 +21,8 @@ jobs:
                 python -m http.client
                 pip install -r requirements.txt
             - name: Run data pipeline
-              env:
-                  NEWS_API_TOKEN: ${{ secrets.NEWS_API_TOKEN }} 
               run: |
                   PREV_MONTH_START=$(date -d "`date +%Y%m01` -1 month" +%Y-%m-%d)
                   PREV_MONTH_END=$(date -d "`date +%Y%m01` -1 day" +%Y-%m-%d)
                   python code/save_hist_news.py --start $PREV_MONTH_START --end $PREV_MONTH_END
             - name: Check changes
-              id: git-check
-              run: |
-                  git config user.name 'github-actions'
-                  git config user.email 'github-actions@github.com'
-                  git add .
-                  git diff --staged --quiet || echo "changes=true" >> $GITHUB_ENV
-            - name: Commit and push if changes
-              if: env.changes == 'true'
-              run: |
-                  git commit -m "update data"
-                  git push
-                  
-            
